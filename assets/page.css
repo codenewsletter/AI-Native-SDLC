@@ -50,39 +50,67 @@
 .hero__sub { font-size: clamp(18px, 2.2vw, 22px); line-height: 1.5; color: var(--ink-2); max-width: 44ch; }
 .hero__meta { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-6); }
 
-.findings { display: grid; grid-template-columns: 1fr; gap: var(--s-3); margin-top: var(--s-10); }
-@media (min-width: 560px) { .findings { grid-template-columns: 1fr 1fr; } }
-.finding { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--s-5); }
-.finding__n { font: 600 var(--t-1) / 1 var(--mono); letter-spacing: .18em; color: var(--primary); }
-.finding p { margin-top: var(--s-3); font-size: 14px; line-height: 1.55; color: var(--ink-2); }
-.finding b { color: var(--ink); font-weight: 600; }
+/* --- what is in this guide (hero contents) --------------- */
+.guide { margin-top: var(--s-10); }
+.guide__lead { font-size: var(--t-4); line-height: 1.55; color: var(--ink-2); max-width: 58ch; margin: 0 0 var(--s-6); }
+.guide__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--border); }
+.guide__list li { margin: 0; border-bottom: 1px solid var(--border); }
+.guide__list a {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 200px) minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--s-4);
+  padding: var(--s-4) var(--s-2);
+  color: inherit;
+  transition: background var(--dur-1) var(--ease);
+}
+.guide__list a:hover { background: var(--surface); text-decoration: none; }
+.guide__n { font: 600 var(--t-2) / 1.4 var(--mono); color: var(--primary); }
+.guide__t { font: 600 var(--t-4) / 1.3 var(--sans); color: var(--ink); }
+.guide__list a:hover .guide__t { color: var(--accent-ink); }
+.guide__d { font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+
+@media (max-width: 700px) {
+  .guide__list a { grid-template-columns: 30px minmax(0, 1fr); gap: var(--s-2) var(--s-3); }
+  .guide__n { grid-row: span 2; }
+  .guide__d { grid-column: 2; }
+}
 
 /* --- sections ------------------------------------------- */
-.section { padding: var(--s-16) 0 0; scroll-margin-top: 96px; }
-.section h2 { font-family: var(--serif); font-weight: 500; font-size: var(--t-6); line-height: 1.18; letter-spacing: -.015em; margin: var(--s-3) 0 var(--s-4); }
-.section p { margin: 0 0 var(--s-4); max-width: var(--measure); }
-.section ul { max-width: var(--measure); margin-bottom: var(--s-4); }
+.section { padding: var(--s-20) 0 0; scroll-margin-top: 96px; }
+.section h2 { font-family: var(--serif); font-weight: 500; font-size: var(--t-6); line-height: 1.18; letter-spacing: -.015em; margin: var(--s-3) 0 var(--s-5); text-wrap: balance; }
+.section p { margin: 0 0 var(--s-5); max-width: var(--measure); }
+
+/* every block element gets the same air on both sides, so nothing butts
+   into the paragraph that follows it */
+.section > .card,
+.section > .codeblock,
+.section > .diagram,
+.section > .matrix,
+.section > .sort,
+.section > .steps,
+.section > .do { margin-block: var(--s-10); }
+.section ul { max-width: var(--measure); margin-bottom: var(--s-5); }
 .lede { font-size: var(--t-4); line-height: 1.55; }
 
 .problem {
   border-left: 2px solid var(--alert);
   background: var(--alert-wash);
   border-radius: 0 var(--r-md) var(--r-md) 0;
-  padding: var(--s-3) var(--s-4);
-  margin: 0 0 var(--s-5);
+  padding: var(--s-4) var(--s-5);
+  margin: 0 0 var(--s-6);
   color: var(--ink-2);
   max-width: var(--measure);
 }
 .problem b { color: var(--alert); font-weight: 600; }
 
-.do { background: var(--wash); border: 1px solid var(--wash-line); border-radius: var(--r-lg); padding: var(--s-5); margin: var(--s-6) 0; max-width: var(--measure); }
+.do { background: var(--wash); border: 1px solid var(--wash-line); padding: var(--s-5) var(--s-6); max-width: var(--measure); }
 .do__k { font: 600 var(--t-1) / 1 var(--mono); letter-spacing: .18em; color: var(--accent-ink-on-wash); }
 .do p { margin: var(--s-2) 0 0; }
 .do a { color: var(--accent-ink-on-wash); }
 
 /* --- 2x2 autonomy matrix -------------------------------- */
 .matrix {
-  margin: 0 0 var(--s-5);
   display: grid;
   grid-template-columns: 26px 1fr 1fr;
   grid-template-rows: auto 1fr 1fr;
@@ -130,8 +158,8 @@
 .splitbar .b { width: 85%; background: var(--primary); }
 
 /* --- advisory -> enforced ------------------------------- */
-.sort { display: grid; grid-template-columns: 1fr auto 1fr; gap: var(--s-4); align-items: stretch; margin-bottom: var(--s-3); }
-.note { font: 500 var(--t-2) / 1.5 var(--mono); color: var(--ink-3); margin: 0 0 var(--s-5); max-width: none; }
+.sort { display: grid; grid-template-columns: 1fr auto 1fr; gap: var(--s-4); align-items: stretch; }
+.note { font: 500 var(--t-2) / 1.5 var(--mono); color: var(--ink-3); margin: calc(var(--s-3) - var(--s-10)) 0 var(--s-10); max-width: none; }
 .sort__col { border: 1px solid var(--border); background: var(--bg); border-radius: var(--r-lg); padding: var(--s-5); }
 .sort__col--enf { background: var(--wash); border-color: var(--wash-line); }
 .sort h4 { font: 600 var(--t-2) / 1 var(--mono); letter-spacing: .16em; color: var(--ink-3); }
@@ -194,7 +222,7 @@
 .foot > .btn { margin-top: 2px; }
 
 /* --- diagrams ------------------------------------------- */
-.diagram { margin: var(--s-6) 0; }
+.diagram { margin: var(--s-10) 0; }
 .diagram svg { display: block; width: 100%; height: auto; }
 /* min-widths sized to fit the desktop content column exactly, so the
    figures only scroll once the viewport is genuinely too narrow */
@@ -203,10 +231,6 @@
 .diagram--bars  { min-width: 800px; }
 .diagram--graph { min-width: 820px; }
 .scroller { position: relative; }
-.scroller.is-scrollable:not(.is-end) {
-  -webkit-mask-image: linear-gradient(to right, #000 90%, transparent 100%);
-          mask-image: linear-gradient(to right, #000 90%, transparent 100%);
-}
 .scroll-hint { display: none; color: var(--accent-ink); }
 .scroller.is-scrollable ~ figcaption .scroll-hint { display: block; margin-bottom: 4px; }
 

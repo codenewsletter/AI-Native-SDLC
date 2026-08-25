@@ -46,7 +46,7 @@
       <li><a href="#move-2">02 · Verification</a></li>
       <li><a href="#move-3">03 · Lifecycle files</a></li>
       <li><a href="#move-4">04 · Enforcement</a></li>
-      <li><a href="#rollout">30-day order</a></li>
+      <li><a href="#rollout">Four-week rollout</a></li>
       <li><a href="#score">Score your team</a></li>
     </ol>
   </nav>
@@ -58,12 +58,41 @@
     <h1 class="display">The AI-Native SDLC</h1>
     <p class="hero__sub">How engineering teams move beyond single coding agents to build a coordinated development system.</p>
 
-    <div class="findings">
-      <div class="finding"><div class="finding__n">01</div><p><b>Verification costs 5x implementation.</b> A 535K-line rewrite at Anthropic: 15% writing, 85% checking.</p></div>
-      <div class="finding"><div class="finding__n">02</div><p><b>Two questions set agent autonomy.</b> Easy to check? Cheap to undo? The model version decides nothing.</p></div>
-      <div class="finding"><div class="finding__n">03</div><p><b>The lifecycle runs on committed files.</b> Each stage writes one; the next stage reads it. Git is the audit trail.</p></div>
-      <div class="finding"><div class="finding__n">04</div><p><b>Must-hold rules run as code.</b> At machine speed a habit stops nothing. A gate does.</p></div>
-    </div>
+    <nav class="guide" aria-label="What is in this guide">
+      <p class="guide__lead">Four decisions that turn coding agents into a system your team runs, plus the order to adopt them in and a way to check where you stand.</p>
+      <ol class="guide__list">
+        <li><a href="#move-1">
+          <span class="guide__n">01</span>
+          <span class="guide__t">Autonomy</span>
+          <span class="guide__d">Decide per task how far the agent goes, instead of ten engineers deciding by feel.</span>
+        </a></li>
+        <li><a href="#move-2">
+          <span class="guide__n">02</span>
+          <span class="guide__t">Verification</span>
+          <span class="guide__d">Buy review capacity before more generation capacity. Checking now costs 5x writing.</span>
+        </a></li>
+        <li><a href="#move-3">
+          <span class="guide__n">03</span>
+          <span class="guide__t">Lifecycle files</span>
+          <span class="guide__d">Put requirements in files agents read directly, so nothing is lost in translation.</span>
+        </a></li>
+        <li><a href="#move-4">
+          <span class="guide__n">04</span>
+          <span class="guide__t">Enforcement</span>
+          <span class="guide__d">Move must-hold rules out of the wiki and into hooks and gates that run as code.</span>
+        </a></li>
+        <li><a href="#rollout">
+          <span class="guide__n">&#8594;</span>
+          <span class="guide__t">The four-week rollout</span>
+          <span class="guide__d">What to do in week one, and what to leave until you have security in the room.</span>
+        </a></li>
+        <li><a href="#score">
+          <span class="guide__n">&#8594;</span>
+          <span class="guide__t">Score your team</span>
+          <span class="guide__d">Eight questions. Each one you miss points at the decision that fixes it.</span>
+        </a></li>
+      </ol>
+    </nav>
   </div>
 
   <section class="section" id="shape">
@@ -403,13 +432,13 @@ exit 0</code></pre>
 
   <section class="section" id="rollout">
     <div class="kicker">Rollout</div>
-    <h2>Your 30-day order</h2>
+    <h2>Go AI-native in four weeks</h2>
     <p>There is no single door in. Anthropic's own adoption map has five valid entry points, and whichever you pick, the work downstream of it follows:</p>
 
     <div class="card card--flush diagram">
       <figure>
         <div class="scroller">
-          <svg class="diagram--graph" viewBox="0 0 1000 772" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An adoption map. Five entry points sit on the top row — capture intent, a context file, a feedback loop, hooks, and plan mode — and each feeds downstream: into skills, subagents and evals, then requirements and design and PR review, then CI/CD, and finally closing the loop. Any entry point is a valid place to start.">
+          <svg class="diagram--graph" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An adoption map. Five entry points sit on the top row — capture intent, a context file, a feedback loop, hooks, and plan mode — and each feeds downstream: into skills, subagents and evals, then requirements and design and PR review, then CI/CD, and finally closing the loop. Any entry point is a valid place to start.">
           <defs><marker id="gah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1 L8.5 5 L0 9 Z" fill="#5C5C5C"/></marker><marker id="gahd" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1 L8.5 5 L0 9 Z" fill="#A6A6A6"/></marker></defs>
           <g font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="12" fill="#8A8A8A" letter-spacing="1.6">
           <text x="8" y="56">1 &#183; START ANYWHERE</text>
@@ -433,18 +462,24 @@ exit 0</code></pre>
           <path d="M 98.0 132.0 C 26.0 222.0 26.0 645.0 609.0 705.0" stroke="#5C5C5C" stroke-width="1.6" marker-end="url(#gah)"/>
           <path d="M 952.0 132.0 C 974.0 222.0 974.0 523.0 833.0 583.0" stroke="#5C5C5C" stroke-width="1.6" marker-end="url(#gah)"/>
           </g>
-          <g><rect x="72" y="78" width="190" height="54" fill="#288CFF"/><text x="88" y="99" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#0A2340">PLAN</text><text x="88" y="120" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Capture intent</text></g>
-          <g><rect x="278" y="78" width="176" height="54" fill="#288CFF"/><text x="294" y="99" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#0A2340">BUILD</text><text x="294" y="120" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">CLAUDE.md</text></g>
-          <g><rect x="470" y="78" width="176" height="54" fill="#288CFF"/><text x="486" y="99" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#0A2340">TEST</text><text x="486" y="120" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Feedback loop</text></g>
-          <g><rect x="662" y="78" width="150" height="54" fill="#288CFF"/><text x="678" y="99" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#0A2340">DEPLOY</text><text x="678" y="120" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Hooks</text></g>
-          <g><rect x="828" y="78" width="150" height="54" fill="#288CFF"/><text x="844" y="99" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#0A2340">BUILD</text><text x="844" y="120" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Plan mode</text></g>
-          <g><rect x="228" y="254" width="176" height="54" fill="#000000"/><text x="244" y="275" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#A6A6A6">BUILD</text><text x="244" y="296" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#FFFFFF">Skills</text></g>
-          <g><rect x="438" y="254" width="176" height="54" fill="#000000"/><text x="454" y="275" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#A6A6A6">BUILD</text><text x="454" y="296" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#FFFFFF">Subagents</text></g>
-          <g><rect x="648" y="254" width="176" height="54" fill="#000000"/><text x="664" y="275" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#A6A6A6">TEST</text><text x="664" y="296" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#FFFFFF">Evals</text></g>
-          <g><rect x="138" y="414" width="232" height="54" fill="#000000"/><text x="154" y="435" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#A6A6A6">DESIGN</text><text x="154" y="456" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#FFFFFF">Requirements &amp; design</text></g>
-          <g><rect x="648" y="414" width="176" height="54" fill="#000000"/><text x="664" y="435" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#A6A6A6">DEPLOY</text><text x="664" y="456" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#FFFFFF">PR review</text></g>
-          <g><rect x="648" y="556" width="176" height="54" fill="#000000"/><text x="664" y="577" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#A6A6A6">DEPLOY</text><text x="664" y="598" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#FFFFFF">CI/CD</text></g>
-          <g><rect x="618" y="678" width="236" height="54" fill="#000000"/><text x="634" y="699" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#A6A6A6">MAINTAIN</text><text x="634" y="720" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#FFFFFF">Closing the loop</text></g>
+          <g><rect x="72" y="78" width="190" height="54" fill="#288CFF" stroke="#288CFF" stroke-width="1.5"/><text x="88" y="99" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#0A2340">PLAN</text><text x="88" y="120" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Capture intent</text></g>
+          <g><rect x="278" y="78" width="176" height="54" fill="#288CFF" stroke="#288CFF" stroke-width="1.5"/><text x="294" y="99" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#0A2340">BUILD</text><text x="294" y="120" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">CLAUDE.md</text></g>
+          <g><rect x="470" y="78" width="176" height="54" fill="#288CFF" stroke="#288CFF" stroke-width="1.5"/><text x="486" y="99" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#0A2340">TEST</text><text x="486" y="120" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Feedback loop</text></g>
+          <g><rect x="662" y="78" width="150" height="54" fill="#288CFF" stroke="#288CFF" stroke-width="1.5"/><text x="678" y="99" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#0A2340">DEPLOY</text><text x="678" y="120" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Hooks</text></g>
+          <g><rect x="828" y="78" width="150" height="54" fill="#288CFF" stroke="#288CFF" stroke-width="1.5"/><text x="844" y="99" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#0A2340">BUILD</text><text x="844" y="120" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Plan mode</text></g>
+          <g><rect x="228" y="254" width="176" height="54" fill="#FFFFFF" stroke="#C9C9C9" stroke-width="1.5"/><text x="244" y="275" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#5C5C5C">BUILD</text><text x="244" y="296" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Skills</text></g>
+          <g><rect x="438" y="254" width="176" height="54" fill="#FFFFFF" stroke="#C9C9C9" stroke-width="1.5"/><text x="454" y="275" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#5C5C5C">BUILD</text><text x="454" y="296" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Subagents</text></g>
+          <g><rect x="648" y="254" width="176" height="54" fill="#FFFFFF" stroke="#C9C9C9" stroke-width="1.5"/><text x="664" y="275" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#5C5C5C">TEST</text><text x="664" y="296" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Evals</text></g>
+          <g><rect x="138" y="414" width="232" height="54" fill="#FFFFFF" stroke="#C9C9C9" stroke-width="1.5"/><text x="154" y="435" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#5C5C5C">DESIGN</text><text x="154" y="456" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Requirements &amp; design</text></g>
+          <g><rect x="648" y="414" width="176" height="54" fill="#FFFFFF" stroke="#C9C9C9" stroke-width="1.5"/><text x="664" y="435" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#5C5C5C">DEPLOY</text><text x="664" y="456" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">PR review</text></g>
+          <g><rect x="648" y="556" width="176" height="54" fill="#FFFFFF" stroke="#C9C9C9" stroke-width="1.5"/><text x="664" y="577" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#5C5C5C">DEPLOY</text><text x="664" y="598" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">CI/CD</text></g>
+          <g><rect x="618" y="678" width="236" height="54" fill="#FFFFFF" stroke="#C9C9C9" stroke-width="1.5"/><text x="634" y="699" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="#5C5C5C">MAINTAIN</text><text x="634" y="720" font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="15" fill="#000000">Closing the loop</text></g>
+          <g font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="12" fill="#5C5C5C">
+          <rect x="8" y="770" width="26" height="13" fill="#288CFF"/>
+          <text x="42" y="781">entry point &#183; start at any one</text>
+          <rect x="290" y="770" width="26" height="13" fill="#FFFFFF" stroke="#C9C9C9" stroke-width="1.5"/>
+          <text x="324" y="781">follows from whichever you pick</text>
+          </g>
           </svg>
         </div>
         <figcaption><span class="scroll-hint">Scroll sideways &#8594;</span>After <a href="https://claude.com/blog/the-ai-native-sdlc-playbook">Anthropic's playbook</a>, redrawn. The node names are Claude Code's; the dependencies are what transfer.</figcaption>

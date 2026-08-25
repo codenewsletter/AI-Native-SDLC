@@ -125,6 +125,7 @@ code {
 }
 .codeblock__copy:hover { color: var(--accent-ink); border-color: var(--accent-ink); }
 .codeblock__copy[data-state="done"] { color: var(--accent-ink); border-color: var(--accent-ink); }
+.codeblock__copy[data-state="manual"] { color: var(--alert); border-color: var(--alert); }
 
 /* --- figures -------------------------------------------- */
 figure { margin: 0; }

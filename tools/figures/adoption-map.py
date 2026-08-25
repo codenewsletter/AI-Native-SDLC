@@ -1,6 +1,6 @@
 # "Start anywhere" adoption map — after Anthropic's AI-Native SDLC playbook.
 # Every connector is a cubic bezier computed from the two boxes it joins.
-W, H = 1000, 772
+W, H = 1000, 800
 ROW = {1: 78, 2: 254, 3: 414, 4: 556, 5: 678}
 BH  = 54
 PAD = 26                      # keeps the long sweeps inside the viewBox
@@ -81,11 +81,18 @@ o.append(f'<path d="{sweep("t4","cicd","R")}" {SOLID}/>')
 o.append('</g>')
 
 def draw(x, w, row, stage, label, entry):
+    """Entry points carry the ink; everything downstream of them recedes.
+
+    The message of the figure is "any of these five is a valid place to
+    start", so the five entry points are the solid blue row and the twelve
+    downstream nodes are quiet outlines. Filling all seventeen made the
+    downstream tree the loudest thing on the page, which is backwards."""
     y = ROW[row]
-    fill = '#288CFF' if entry else '#000000'
-    eyebrow = '#0A2340' if entry else '#A6A6A6'      # 4.74:1 on blue, 6.7:1 on black
-    text = '#000000' if entry else '#FFFFFF'         # 6.29:1 on blue, 21:1 on black
-    return (f'<g><rect x="{x}" y="{y}" width="{w}" height="{BH}" fill="{fill}"/>'
+    if entry:
+        fill, stroke, eyebrow, text = '#288CFF', '#288CFF', '#0A2340', '#000000'
+    else:
+        fill, stroke, eyebrow, text = '#FFFFFF', '#C9C9C9', '#5C5C5C', '#000000'
+    return (f'<g><rect x="{x}" y="{y}" width="{w}" height="{BH}" fill="{fill}" stroke="{stroke}" stroke-width="1.5"/>'
             f'<text x="{x+16}" y="{y+21}" font-family="ui-monospace,\'JetBrains Mono\',Menlo,monospace" '
             f'font-size="10.5" font-weight="600" letter-spacing="1.6" fill="{eyebrow}">{stage}</text>'
             f'<text x="{x+16}" y="{y+42}" font-family="ui-monospace,\'JetBrains Mono\',Menlo,monospace" '
@@ -96,5 +103,11 @@ for x, w, st, lb in top:
 for k, x, w, st, lb, row in mid:
     o.append(draw(x, w, row, st, lb, False))
 
+o.append('<g font-family="ui-monospace,\'JetBrains Mono\',Menlo,monospace" font-size="12" fill="#5C5C5C">')
+o.append(f'<rect x="8" y="{H-30}" width="26" height="13" fill="#288CFF"/>')
+o.append(f'<text x="42" y="{H-19}">entry point &#183; start at any one</text>')
+o.append(f'<rect x="290" y="{H-30}" width="26" height="13" fill="#FFFFFF" stroke="#C9C9C9" stroke-width="1.5"/>')
+o.append(f'<text x="324" y="{H-19}">follows from whichever you pick</text>')
+o.append('</g>')
 o.append('</svg>')
 print('\n'.join(o))

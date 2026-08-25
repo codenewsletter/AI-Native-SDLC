@@ -3,23 +3,66 @@
 (function () {
   'use strict';
 
-  /* --- copy buttons ------------------------------------- */
+  /* --- copy buttons -------------------------------------- */
+  /* The async Clipboard API rejects with NotAllowedError inside a sandboxed
+     iframe (the page is embedded that way in previews), so execCommand is a
+     real fallback here, not legacy politeness. If both fail the button says
+     so rather than silently pretending it worked. */
   document.querySelectorAll('[data-copy]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var pre = btn.parentElement.querySelector('pre');
       if (!pre) return;
-      var done = function () {
-        btn.textContent = 'Copied';
-        btn.dataset.state = 'done';
-        setTimeout(function () { btn.textContent = 'Copy'; delete btn.dataset.state; }, 1600);
+      var text = pre.innerText;
+
+      var done = function (ok) {
+        btn.textContent = ok ? 'Copied' : 'Press \u2318C';
+        btn.dataset.state = ok ? 'done' : 'manual';
+        if (!ok) select(pre);
+        setTimeout(function () {
+          btn.textContent = 'Copy';
+          delete btn.dataset.state;
+        }, ok ? 1600 : 3000);
       };
+
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(pre.innerText).then(done, function () { select(pre); });
+        navigator.clipboard.writeText(text).then(
+          function () { done(true); },
+          function () { done(execCopy(text)); }
+        );
       } else {
-        select(pre);
+        done(execCopy(text));
       }
     });
   });
+
+  /* Copies via a throwaway textarea. Returns whether it actually worked,
+     and puts the user's own selection back when it is finished. */
+  function execCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:-9999px;opacity:0';
+    document.body.appendChild(ta);
+
+    var sel = window.getSelection();
+    var previous = sel && sel.rangeCount ? sel.getRangeAt(0) : null;
+
+    var ok = false;
+    try {
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      ok = document.execCommand('copy');
+    } catch (e) {
+      ok = false;
+    }
+
+    document.body.removeChild(ta);
+    if (sel) {
+      sel.removeAllRanges();
+      if (previous) sel.addRange(previous);
+    }
+    return ok;
+  }
 
   function select(pre) {
     var r = document.createRange();
