@@ -1,0 +1,25 @@
+# Netlify build for The AI-Native SDLC.
+#
+# The site is plain static files, so the build only assembles the publishable
+# subset (the page and its assets — not the generators, kit docs or README)
+# and runs the palette gate first: a colour pair that drops below its
+# threshold fails the deploy instead of shipping.
+
+[build]
+  publish = "_site"
+  command = "python3 tools/contrast.py && mkdir -p _site && cp index.html _site/ && cp -r assets _site/"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"
+
+# The page is a single HTML file that changes whenever the copy does, and the
+# assets are not content-hashed, so nothing here is cached immutably.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
