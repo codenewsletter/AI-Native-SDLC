@@ -41,20 +41,14 @@ PAIRS = [
     ('primary fill vs bg',        PRIMARY,   BG,      3.0),   # non-text contrast
     ('border vs bg',              '#E4E4E4', BG,      1.0),   # decorative
     # diagram labels
-    ('node eyebrow on primary',   '#0A2340', PRIMARY,   4.5),
     ('connector vs surface',      '#5C5C5C', SURFACE,   3.0),
     # diagrams: one hue, outline vs filled
     ('graph label on weak fill',  '#000000', '#E9F2FF', 7.0),
-    ('graph label on strong',     '#000000', '#288CFF', 4.5),
+    ('graph label on strong',     '#FFFFFF', '#0F6FDB', 4.5),
+    ('graph eyebrow on strong',   '#FFFFFF', '#0F6FDB', 4.5),
     ('graph eyebrow on weak',     '#3F3F3F', '#E9F2FF', 4.5),
-    ('graph outline vs surface',  '#288CFF', SURFACE,   3.0),
-    # A filled node against a pale one measures 2.96:1, just under the 3:1
-    # adjacency bar. It is held to a lower threshold on purpose: the two
-    # never share an edge (bars are gapped, nodes are separated by
-    # connectors), and the pale node carries a --graph-line border, so what
-    # a reader actually compares is an outlined shape against a solid one,
-    # not two flat fills touching.
-    ('graph strong vs weak fill', '#288CFF', '#E9F2FF', 2.5),
+    ('graph outline vs surface',  '#0F6FDB', SURFACE,   3.0),
+    ('graph strong vs weak fill', '#0F6FDB', '#E9F2FF', 3.0),
 ]
 
 fail = 0

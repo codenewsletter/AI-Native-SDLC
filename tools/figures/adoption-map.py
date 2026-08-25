@@ -89,9 +89,11 @@ def draw(x, w, row, stage, label, entry):
     downstream tree the loudest thing on the page, which is backwards."""
     y = ROW[row]
     if entry:
-        fill, stroke, eyebrow, text = '#288CFF', '#288CFF', '#0A2340', '#000000'
+        # white on #0F6FDB is 4.86:1; every lighter tint drops under AA, so
+        # the eyebrow is white too and separates by size and letterspacing
+        fill, stroke, eyebrow, text = '#0F6FDB', '#0F6FDB', '#FFFFFF', '#FFFFFF'
     else:
-        fill, stroke, eyebrow, text = '#E9F2FF', '#288CFF', '#3F3F3F', '#000000'
+        fill, stroke, eyebrow, text = '#E9F2FF', '#0F6FDB', '#3F3F3F', '#000000'
     return (f'<g><rect x="{x}" y="{y}" width="{w}" height="{BH}" fill="{fill}" stroke="{stroke}" stroke-width="1.5"/>'
             f'<text x="{x+16}" y="{y+21}" font-family="ui-monospace,\'JetBrains Mono\',Menlo,monospace" '
             f'font-size="10.5" font-weight="600" letter-spacing="1.6" fill="{eyebrow}">{stage}</text>'
@@ -104,9 +106,9 @@ for k, x, w, st, lb, row in mid:
     o.append(draw(x, w, row, st, lb, False))
 
 o.append('<g font-family="ui-monospace,\'JetBrains Mono\',Menlo,monospace" font-size="12" fill="#5C5C5C">')
-o.append(f'<rect x="8" y="{H-30}" width="26" height="13" fill="#288CFF"/>')
+o.append(f'<rect x="8" y="{H-30}" width="26" height="13" fill="#0F6FDB"/>')
 o.append(f'<text x="42" y="{H-19}">entry point &#183; start at any one</text>')
-o.append(f'<rect x="290" y="{H-30}" width="26" height="13" fill="#E9F2FF" stroke="#288CFF" stroke-width="1.5"/>')
+o.append(f'<rect x="290" y="{H-30}" width="26" height="13" fill="#E9F2FF" stroke="#0F6FDB" stroke-width="1.5"/>')
 o.append(f'<text x="324" y="{H-19}">follows from whichever you pick</text>')
 o.append('</g>')
 o.append('</svg>')

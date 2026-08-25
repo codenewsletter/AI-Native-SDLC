@@ -86,12 +86,18 @@ diagram uses black as a fill. Every node is drawn from a single blue:
 
 | Role | Fill | Border | Label |
 |---|---|---|---|
-| Weak node — everything the figure is not pointing at | `--graph-weak` `#E9F2FF` | `--graph-line` `#288CFF` | `--ink` (18.6:1) |
-| Strong node — the one thing the figure is about | `--graph-strong` `#288CFF` | same | `--ink` (6.3:1) |
+| Weak node — everything the figure is not pointing at | `--graph-weak` `#E9F2FF` | `--graph-line` `#0F6FDB` | `--ink` (18.6:1) |
+| Strong node — the one thing the figure is about | `--graph-strong` `#0F6FDB` | same | white (4.9:1) |
 
 The pale node always keeps its border: the fill alone is 1.13:1 against a
-white card, so without it the shape has no edge. The border is `--primary`,
-which is 3.34:1 on white, so the boundary is real.
+white card, so without it the shape has no edge. The border is 4.86:1 on
+white, so the boundary is real.
+
+The blue is `--accent-ink` `#0F6FDB`, not `--primary` `#288CFF`, and the
+reason is the white label. White is 4.86:1 on `#0F6FDB` and passes AA; on
+`#288CFF` it is 3.34:1 and does not. Every lighter tint for the small
+eyebrow line drops below 4.5:1 too, so eyebrows on a filled node are also
+white and separate by size and letterspacing rather than colour.
 
 Two colours that are deliberately not part of that scale:
 

@@ -29,13 +29,17 @@
   /* --- diagrams ------------------------------------------- */
   /* Diagrams are drawn in one hue, outline versus filled — black fills
      sitting next to blue ones read as two competing systems. A weak node
-     is the pale fill inside a --graph-line border (3.34:1 on white, so
-     the boundary is real); a strong node is that same blue, filled. Text
-     is --ink on both: 18.6:1 on the pale, 6.3:1 on the fill. Grey is
-     structure only — connectors, arrows, gates — never a value. */
+     is the pale fill inside a --graph-line border (4.86:1 on white, so
+     the boundary is real); a strong node is that same blue, filled.
+
+     The blue is --accent-ink #0F6FDB rather than --primary #288CFF because
+     filled nodes carry WHITE labels: white is 4.86:1 on #0F6FDB and passes
+     AA, but only 3.34:1 on #288CFF, which does not. Labels are white on the
+     fill and --ink on the pale (18.6:1). Grey is structure only —
+     connectors, arrows, gates — never a value. */
   --graph-weak:   #E9F2FF;
-  --graph-strong: #288CFF;
-  --graph-line:   #288CFF;
+  --graph-strong: #0F6FDB;
+  --graph-line:   #0F6FDB;
   --graph-rule:   #5C5C5C;
 
   /* --- type ---------------------------------------------- */
