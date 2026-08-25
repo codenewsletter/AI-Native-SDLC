@@ -46,6 +46,17 @@ Both checks are reproducible, not asserted:
   is right to within 0.025px at 20px — and asserts the square's bottom edge lands on
   the text baseline at every size the page renders it. Measured 0.00px.
 
+## The square rule
+
+Every radius token is `0` and there are no shadow tokens. Cards, buttons, inputs and
+diagram nodes are all square, and structure comes from alignment and one hairline
+border. Two places where that changed the design rather than just the CSS:
+
+- **The autonomy matrix and the advisory/enforced sort lost their outer card.** Both
+  were a grid of bordered cells sitting inside another bordered box; with rounding
+  gone, the nested frame was the loudest thing on the screen. One frame is enough.
+- **Hover states stopped moving.** Cells darken their border instead of lifting.
+
 ## Figures
 
 Four diagrams, all authored as inline SVG from generators in `tools/figures/`, so

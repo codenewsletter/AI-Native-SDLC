@@ -118,7 +118,7 @@
 
     var verdictFor = function (n) {
       if (n <= 3) return 'Your AI gains are sitting in a review queue right now. Start Week 1 today.';
-      if (n <= 6) return 'Your gap is enforcement. Do the Move 04 sort.';
+      if (n <= 6) return 'Your gap is enforcement. Do the Decision 04 sort.';
       return 'You’re ahead of most teams on this page. Tell us what you learned: thecode@joinsuperhuman.io';
     };
 

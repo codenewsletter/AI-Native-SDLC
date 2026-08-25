@@ -85,7 +85,7 @@ def draw(x, w, row, stage, label, entry):
     fill = '#288CFF' if entry else '#000000'
     eyebrow = '#0A2340' if entry else '#A6A6A6'      # 4.74:1 on blue, 6.7:1 on black
     text = '#000000' if entry else '#FFFFFF'         # 6.29:1 on blue, 21:1 on black
-    return (f'<g><rect x="{x}" y="{y}" width="{w}" height="{BH}" rx="9" fill="{fill}"/>'
+    return (f'<g><rect x="{x}" y="{y}" width="{w}" height="{BH}" fill="{fill}"/>'
             f'<text x="{x+16}" y="{y+21}" font-family="ui-monospace,\'JetBrains Mono\',Menlo,monospace" '
             f'font-size="10.5" font-weight="600" letter-spacing="1.6" fill="{eyebrow}">{stage}</text>'
             f'<text x="{x+16}" y="{y+42}" font-family="ui-monospace,\'JetBrains Mono\',Menlo,monospace" '

@@ -17,15 +17,30 @@ On the blue wash `--wash` `#E9F2FF`, `--accent-ink` drops to 4.31:1 and fails. W
 panels use `--accent-ink-on-wash` `#0D66CC` (**4.91:1**) instead — `.card--wash` and
 `.do` already do this. Run `python3 tools/contrast.py` after touching any colour.
 
-### Serif carries voice, not chrome
+### Every corner is 90 degrees
 
-Newsreader carries the wordmark, headings, big statistics and the scorecard total.
-Everything functional is Inter. Anything countable — dates, counts, keys, file names,
-code — is JetBrains Mono, via `.meta` or a mono-set component. The density is
-deliberate: the reader is a senior engineer skimming for structure before prose.
+`--r-sm`, `--r-md`, `--r-lg` and `--r-pill` are all `0`, and there are no shadow
+tokens. Cards, buttons, inputs, checkboxes and the nodes inside every diagram are
+square. Alignment and a single hairline border carry the structure that rounding and
+drop shadows used to. A rounded corner anywhere on the page now reads as a mistake,
+so add one only by changing the token.
 
-Newsreader is the family `coding-hacks` already used, kept here so the two
-properties read as one publication.
+The same rule killed the hover lift on the autonomy matrix: cells darken their border
+instead of floating.
+
+### Four families, four jobs
+
+| Family | Carries |
+|---|---|
+| **Eczar** | Section labels only — `.kicker`, via `--display` |
+| **Newsreader** | The wordmark, headings, big statistics, the scorecard total |
+| **Inter** | Everything functional |
+| **JetBrains Mono** | Anything countable — dates, counts, keys, file names, code |
+
+Newsreader is the family `coding-hacks` already used, kept here so the two properties
+read as one publication. Eczar earns its place by doing exactly one job: it marks
+where a section begins and nothing else. The density is deliberate — the reader is a
+senior engineer skimming for structure before prose.
 
 ### Copy the wordmark, don't retype it
 

@@ -13,7 +13,7 @@ o = [f'<svg class="diagram--bars" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org
 def bar(x, w, y, label, fill, text, dash=None, stroke=None):
     d = f' stroke-dasharray="{dash}"' if dash else ''
     s = f' stroke="{stroke}" stroke-width="1.5"{d}' if stroke else ''
-    g = [f'<rect x="{x}" y="{y}" width="{w}" height="{BH}" rx="8" fill="{fill}"{s}/>']
+    g = [f'<rect x="{x}" y="{y}" width="{w}" height="{BH}" fill="{fill}"{s}/>']
     if label:
         g.append(f'<text x="{x+w/2:.1f}" y="{y+28}" text-anchor="middle" font-family="Inter,system-ui,sans-serif" '
                  f'font-size="14.5" font-weight="500" fill="{text}">{label}</text>')

@@ -18,7 +18,7 @@ BW, BH, GAP = 296, 42, 26
 x0, y0 = 20, 40
 for i, s in enumerate(STAGES):
     y = y0 + i * (BH + GAP)
-    o.append(f'<rect x="{x0}" y="{y}" width="{BW}" height="{BH}" rx="8" fill="#000000"/>')
+    o.append(f'<rect x="{x0}" y="{y}" width="{BW}" height="{BH}" fill="#000000"/>')
     o.append(f'<text x="{x0+BW/2}" y="{y+27}" text-anchor="middle" font-family="Inter,system-ui,sans-serif" '
              f'font-size="15" font-weight="500" fill="#FFFFFF">{s}</text>')
     if i < len(STAGES) - 1:
