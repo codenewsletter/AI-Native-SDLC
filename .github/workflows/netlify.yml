@@ -1,0 +1,46 @@
+name: Deploy to Netlify
+
+# This repository's default branch is claude/code-kit-handover-2zx92f, and a
+# workflow's on.push.branches filter cannot read the default branch
+# dynamically, so it is named here. Rename it in both places if it changes.
+on:
+  push:
+    branches: [claude/code-kit-handover-2zx92f]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The page argues for mechanical checks in the pipeline, so the palette
+      # check gates the deploy: a colour pair below its threshold fails here
+      # rather than shipping.
+      - name: Check palette contrast
+        run: python3 tools/contrast.py
+
+      # Same assembly netlify.toml performs, so a Git-linked build and this
+      # workflow publish byte-identical directories.
+      - name: Assemble the site
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          cp -r assets _site/
+
+      - name: Deploy
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          # Skip rather than fail while the secrets are still unset, so adding
+          # this workflow does not redden every push before it is configured.
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "::notice::NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID are not set — skipping the deploy."
+            echo "Add both under Settings → Secrets and variables → Actions, then re-run."
+            exit 0
+          fi
+          npx --yes netlify-cli@17 deploy \
+            --dir=_site \
+            --prod \
+            --message "${GITHUB_SHA::7} — ${GITHUB_REF_NAME}"
