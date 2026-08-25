@@ -82,3 +82,11 @@ offset has to be re-measured.
 
 Any static host. There is nothing to build; upload the repository root.
 The three brand faces load from Google Fonts and each has a real fallback stack.
+
+For a single self-contained file — one HTML with the CSS, JS and favicon
+inlined, for pasting into a CMS or an email-tool landing page:
+
+```
+python3 tools/build-single.py dist/ai-native-sdlc.html
+python3 tools/build-single.py --fragment dist/fragment.html   # no <html> shell
+```
