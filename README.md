@@ -80,7 +80,10 @@ Code's palette and credited in each figure's caption. Two deliberate departures:
   refills with queue, so row 3 shows that and the caption says whose claim is whose.
   Rows 1 and 3 end at the same x on purpose.
 
-The fourth, the lifecycle loop in Move 03, is ours.
+The fourth, the lifecycle loop in Decision 03, is ours.
+
+All four are drawn in a single hue, outline versus filled — see the diagram
+rule in `kit/README.md`. Black is not a fill colour anywhere on the page.
 
 ## One open decision
 

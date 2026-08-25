@@ -154,8 +154,8 @@
 .stat__n--hi small { color: var(--accent-ink); }
 .splitbar { display: flex; height: 14px; border-radius: var(--r-pill); overflow: hidden; border: 1px solid var(--border); margin: var(--s-5) 0 var(--s-4); background: var(--surface); }
 .splitbar i { display: block; }
-.splitbar .a { width: 15%; background: var(--ink); }
-.splitbar .b { width: 85%; background: var(--primary); }
+.splitbar .a { width: 15%; background: var(--graph-weak); }
+.splitbar .b { width: 85%; background: var(--graph-strong); }
 
 /* --- advisory -> enforced ------------------------------- */
 .sort { display: grid; grid-template-columns: 1fr auto 1fr; gap: var(--s-4); align-items: stretch; }

@@ -79,6 +79,27 @@ measuring the wrong font.
 Add `.brand--invert` on a dark ground: the word goes white and the mark inverts
 (white square, blue inner, white cursor).
 
+### Diagrams are one hue, outline versus filled
+
+Black fills sitting next to blue ones read as two competing systems, so no
+diagram uses black as a fill. Every node is drawn from a single blue:
+
+| Role | Fill | Border | Label |
+|---|---|---|---|
+| Weak node — everything the figure is not pointing at | `--graph-weak` `#E9F2FF` | `--graph-line` `#288CFF` | `--ink` (18.6:1) |
+| Strong node — the one thing the figure is about | `--graph-strong` `#288CFF` | same | `--ink` (6.3:1) |
+
+The pale node always keeps its border: the fill alone is 1.13:1 against a
+white card, so without it the shape has no edge. The border is `--primary`,
+which is 3.34:1 on white, so the boundary is real.
+
+Two colours that are deliberately not part of that scale:
+
+- **Grey `--graph-rule` `#5C5C5C`** is structure — connectors, arrows, gate
+  diamonds, axis labels. It is never a value.
+- **Red `--alert`** appears in exactly one figure, on the queue block, because
+  that block is the argument of the figure rather than another stage.
+
 ## Extending the palette
 
 Two tokens were added beyond the authoritative five, both because the page needed a

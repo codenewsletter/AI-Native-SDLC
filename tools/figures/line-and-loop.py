@@ -18,9 +18,9 @@ BW, BH, GAP = 296, 42, 26
 x0, y0 = 20, 40
 for i, s in enumerate(STAGES):
     y = y0 + i * (BH + GAP)
-    o.append(f'<rect x="{x0}" y="{y}" width="{BW}" height="{BH}" fill="#000000"/>')
+    o.append(f'<rect x="{x0}" y="{y}" width="{BW}" height="{BH}" fill="#E9F2FF" stroke="#288CFF" stroke-width="1.5"/>')
     o.append(f'<text x="{x0+BW/2}" y="{y+27}" text-anchor="middle" font-family="Inter,system-ui,sans-serif" '
-             f'font-size="15" font-weight="500" fill="#FFFFFF">{s}</text>')
+             f'font-size="15" font-weight="500" fill="#000000">{s}</text>')
     if i < len(STAGES) - 1:
         o.append(f'<path d="M {x0+BW/2} {y+BH+5} L {x0+BW/2} {y+BH+GAP-7}" stroke="#8A8A8A" stroke-width="1.5" '
                  'marker-end="url(#lahd)"/>')
@@ -34,7 +34,7 @@ for i, s in enumerate(STAGES):
     a = math.radians(-90 + i * 60)
     px, py = cx + R * math.cos(a), cy + R * math.sin(a)
     pts.append((px, py))
-    o.append(f'<circle cx="{px:.1f}" cy="{py:.1f}" r="{r}" fill="#000000"/>')
+    o.append(f'<circle cx="{px:.1f}" cy="{py:.1f}" r="{r}" fill="#E9F2FF" stroke="#288CFF" stroke-width="1.5"/>')
 
 # arrows along the ring, trimmed clear of both circles
 for i in range(6):
@@ -53,7 +53,7 @@ o.append(f'<text x="{cx}" y="{cy+7}" text-anchor="middle" font-family="ui-monosp
 for i, s in enumerate(STAGES):
     px, py = pts[i]
     o.append(f'<text x="{px:.1f}" y="{py+6:.1f}" text-anchor="middle" font-family="Inter,system-ui,sans-serif" '
-             f'font-size="15" font-weight="500" fill="#FFFFFF">{s}</text>')
+             f'font-size="15" font-weight="500" fill="#000000">{s}</text>')
 
 SUB = [(x0, 'Traditional &#8212; the line.', 'One slow loop back is a new release cycle.'),
        (404, 'AI-native &#8212; the loop.', 'Hours, not weeks, with humans above the loop.')]

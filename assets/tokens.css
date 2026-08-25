@@ -26,6 +26,18 @@
   --alert-wash:         #FDF0EE;
   --alert-line:         #F3CFC9;
 
+  /* --- diagrams ------------------------------------------- */
+  /* Diagrams are drawn in one hue, outline versus filled — black fills
+     sitting next to blue ones read as two competing systems. A weak node
+     is the pale fill inside a --graph-line border (3.34:1 on white, so
+     the boundary is real); a strong node is that same blue, filled. Text
+     is --ink on both: 18.6:1 on the pale, 6.3:1 on the fill. Grey is
+     structure only — connectors, arrows, gates — never a value. */
+  --graph-weak:   #E9F2FF;
+  --graph-strong: #288CFF;
+  --graph-line:   #288CFF;
+  --graph-rule:   #5C5C5C;
+
   /* --- type ---------------------------------------------- */
   --serif:   'Newsreader', 'Iowan Old Style', Georgia, serif;
   --display: 'Eczar', 'Newsreader', Georgia, serif;   /* section labels only */
