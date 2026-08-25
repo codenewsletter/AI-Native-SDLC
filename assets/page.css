@@ -184,15 +184,6 @@
 .score__num { font-family: var(--serif); font-weight: 500; font-size: 44px; line-height: 1; color: var(--primary); font-variant-numeric: tabular-nums; }
 .score__verdict { margin: 0; color: var(--ink-2); flex: 1 1 260px; }
 
-/* --- sources -------------------------------------------- */
-.section ul.sources { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--border); max-width: none; }
-.sources li { margin: 0; border-bottom: 1px solid var(--border); }
-.sources a { display: flex; gap: var(--s-4); align-items: baseline; padding: var(--s-3) var(--s-1); flex-wrap: wrap; }
-.sources a:hover { text-decoration: none; background: var(--surface); }
-.sources .who { font: 600 var(--t-2) / 1.4 var(--mono); color: var(--ink); flex: 0 0 168px; }
-.sources .what { color: var(--ink-2); font-size: 14.5px; flex: 1 1 240px; }
-.sources a:hover .what { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
-
 /* --- footer --------------------------------------------- */
 .foot { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-8); flex-wrap: wrap; }
 .foot__nav { display: grid; grid-template-columns: repeat(2, minmax(140px, auto)); gap: 6px var(--s-6); }
