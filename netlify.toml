@@ -7,7 +7,7 @@
 
 [build]
   publish = "_site"
-  command = "python3 tools/contrast.py && mkdir -p _site && cp index.html _site/ && cp -r assets _site/"
+  command = "bash tools/build-site.sh"
 
 [build.environment]
   PYTHON_VERSION = "3.12"

@@ -14,19 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # The page argues for mechanical checks in the pipeline, so the palette
-      # check gates the deploy: a colour pair below its threshold fails here
-      # rather than shipping.
-      - name: Check palette contrast
-        run: python3 tools/contrast.py
-
-      # Same assembly netlify.toml performs, so a Git-linked build and this
-      # workflow publish byte-identical directories.
-      - name: Assemble the site
-        run: |
-          mkdir -p _site
-          cp index.html _site/
-          cp -r assets _site/
+      # The same script netlify.toml runs, so a Git-linked Netlify build and
+      # this workflow publish byte-identical output. It also runs the palette
+      # gate: a colour pair below its threshold stops the deploy.
+      - name: Build the site
+        run: bash tools/build-site.sh
 
       - name: Deploy
         env:
