@@ -2,13 +2,13 @@
    easy to break silently:
 
      1. no console errors, no failed requests
-     2. the wordmark square lands exactly on the Playfair baseline
+     2. the wordmark square lands exactly on the serif baseline
      3. the page never scrolls horizontally, at any of three widths
 
    Usage:  npm run dev   (in one shell)
            npm run verify
 
-   Needs the real Playfair Display metrics — the baseline assertion is
+   Needs the real Newsreader metrics — the baseline assertion is
    meaningless against a fallback serif, so a missing face fails loudly
    rather than passing quietly.
 
@@ -48,7 +48,7 @@ const fails = [];
 
     const families = await page.evaluate(() =>
       [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family))]);
-    for (const need of ['Playfair Display', 'Inter', 'JetBrains Mono']) {
+    for (const need of ['Newsreader', 'Inter', 'JetBrains Mono']) {
       if (!families.includes(need)) fails.push(`[${width}] font not loaded: ${need}`);
     }
 
@@ -58,7 +58,7 @@ const fails = [];
 
     const marks = await page.evaluate(() => {
       const c = document.createElement('canvas').getContext('2d');
-      c.font = '700 400px "Playfair Display"';
+      c.font = '700 400px "Newsreader"';
       const capRatio = c.measureText('H').actualBoundingBoxAscent / 400;
       return [...document.querySelectorAll('.brand')].map(brand => {
         // a zero-size inline-block: flex baseline alignment puts its bottom

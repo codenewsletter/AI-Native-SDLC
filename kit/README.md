@@ -17,13 +17,15 @@ On the blue wash `--wash` `#E9F2FF`, `--accent-ink` drops to 4.31:1 and fails. W
 panels use `--accent-ink-on-wash` `#0D66CC` (**4.91:1**) instead — `.card--wash` and
 `.do` already do this. Run `python3 tools/contrast.py` after touching any colour.
 
-### Serif is rare on purpose
+### Serif carries voice, not chrome
 
-Playfair Display carries the wordmark, the page title, big statistics and nothing
-else by default. Everything functional is Inter. Anything countable — dates, counts,
-keys, file names, code — is JetBrains Mono, via `.meta` or a mono-set component.
-The density is deliberate: the reader is a senior engineer skimming for structure
-before prose.
+Newsreader carries the wordmark, headings, big statistics and the scorecard total.
+Everything functional is Inter. Anything countable — dates, counts, keys, file names,
+code — is JetBrains Mono, via `.meta` or a mono-set component. The density is
+deliberate: the reader is a senior engineer skimming for structure before prose.
+
+Newsreader is the family `coding-hacks` already used, kept here so the two
+properties read as one publication.
 
 ### Copy the wordmark, don't retype it
 
@@ -33,9 +35,11 @@ gap in the lockup.
 
 ### The wordmark's geometry is measured
 
-- `.brand__mark` is `.72em`. Playfair Display 700 has a cap-height ratio of
-  **0.7188**, measured in-browser, so the square matches the caps beside it to
-  within 0.02px at 20px.
+- `.brand__mark` is `.72em`. Newsreader 700 has a cap-height ratio of **0.71875**,
+  measured in-browser and stable from 400px to 8000px, so the square matches the caps
+  beside it to within 0.025px at 20px. (The ratio happens to be near-identical to
+  Playfair Display's, so `.72em` survived the family change — but that was checked,
+  not assumed. Re-measure on any future swap.)
 - There is **no** vertical nudge. `.brand` is `inline-flex` with
   `align-items: baseline`, and an empty inline-block takes its bottom margin edge as
   its baseline — so the browser lands the square on the baseline by itself. Measured
@@ -45,7 +49,8 @@ gap in the lockup.
   switch it to an inline `<svg>`, and you have to re-measure.
 
 `node tools/verify.js` asserts all of this against a real render, at every size the
-page uses the mark.
+page uses the mark, and fails loudly if the serif falls back rather than quietly
+measuring the wrong font.
 
 ## Sizes
 

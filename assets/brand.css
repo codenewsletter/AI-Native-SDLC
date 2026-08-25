@@ -3,10 +3,12 @@
    The wordmark. Geometry is measured, not eyeballed — re-measure
    with `npm run verify` (tools/verify.js) after any change here.
 
-     .brand__mark is .72em  — Playfair Display 700 has a cap-height
-                              ratio of 0.7188, measured in-browser,
-                              so at .72em the square matches the caps
-                              around it to within 0.02px at 20px.
+     .brand__mark is .72em  — Newsreader 700 has a cap-height ratio
+                              of 0.71875, measured in-browser and
+                              stable from 400px to 8000px, so at .72em
+                              the square matches the caps around it to
+                              within 0.025px at 20px. Re-measure if the
+                              serif family ever changes again.
 
      no translateY          — .brand is inline-flex with
                               align-items:baseline, and an EMPTY

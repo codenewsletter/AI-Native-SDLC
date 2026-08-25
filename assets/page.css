@@ -194,16 +194,19 @@
 /* --- diagrams ------------------------------------------- */
 .diagram { margin: var(--s-6) 0; }
 .diagram svg { display: block; width: 100%; height: auto; }
-.diagram--wide { min-width: 700px; }
-.diagram--loop { min-width: 560px; }
+/* min-widths sized to fit the desktop content column exactly, so the
+   figures only scroll once the viewport is genuinely too narrow */
+.diagram--loop  { min-width: 560px; }
+.diagram--loop2 { min-width: 800px; }
+.diagram--bars  { min-width: 800px; }
+.diagram--graph { min-width: 820px; }
 .scroller { position: relative; }
 .scroller.is-scrollable:not(.is-end) {
   -webkit-mask-image: linear-gradient(to right, #000 90%, transparent 100%);
           mask-image: linear-gradient(to right, #000 90%, transparent 100%);
 }
 .scroll-hint { display: none; color: var(--accent-ink); }
-.scroller.is-scrollable + figcaption .scroll-hint,
-.scroller.is-scrollable ~ figcaption .scroll-hint { display: inline; }
+.scroller.is-scrollable ~ figcaption .scroll-hint { display: block; margin-bottom: 4px; }
 
 /* --- responsive ----------------------------------------- */
 @media (max-width: 560px) {

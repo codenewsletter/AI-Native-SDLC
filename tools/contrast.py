@@ -40,6 +40,12 @@ PAIRS = [
     ('on-primary on primary',     '#FFFFFF', PRIMARY, 3.0),   # large/bold only
     ('primary fill vs bg',        PRIMARY,   BG,      3.0),   # non-text contrast
     ('border vs bg',              '#E4E4E4', BG,      1.0),   # decorative
+    # diagram labels
+    ('node label on ink',         '#FFFFFF', '#000000', 7.0),
+    ('node eyebrow on ink',       '#A6A6A6', '#000000', 4.5),
+    ('node label on primary',     '#000000', PRIMARY,   4.5),
+    ('node eyebrow on primary',   '#0A2340', PRIMARY,   4.5),
+    ('connector vs surface',      '#5C5C5C', SURFACE,   3.0),
 ]
 
 fail = 0

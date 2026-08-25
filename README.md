@@ -41,32 +41,43 @@ Both checks are reproducible, not asserted:
   kit's own figures exactly — `#288CFF` is 3.17:1 on the background and 3.34:1
   against white, so it stays a fill colour; `--accent-ink` `#0F6FDB` is 4.62:1 and
   carries links and small text.
-- **Wordmark.** `tools/verify.js` measures Playfair Display 700's cap-height ratio
-  in-browser (**0.7188**, so the kit's `.72em` square is right to within 0.02px at
-  20px) and asserts the square's bottom edge lands on the text baseline at every
-  size the page renders it. Measured 0.00px.
+- **Wordmark.** `tools/verify.js` measures Newsreader 700's cap-height ratio
+  in-browser — **0.71875**, stable from 400px to 8000px, so the kit's `.72em` square
+  is right to within 0.025px at 20px — and asserts the square's bottom edge lands on
+  the text baseline at every size the page renders it. Measured 0.00px.
 
-## Two open decisions
+## Figures
 
-Both are one-line changes, flagged rather than silently settled:
+Four diagrams, all authored as inline SVG from generators in `tools/figures/`, so
+the geometry is computed rather than hand-placed. Re-run a generator and paste its
+output back into `index.html` to change one:
 
-1. **Section headings are serif.** `h1`, the `<h2>`s, the big statistics and the
-   scorecard total all use Playfair Display; everything functional is Inter and
-   everything countable is JetBrains Mono. The kit handover is ambiguous here — it
-   reserves serif for "the wordmark and display headlines" but also notes the
-   newsletter landing page sets headlines in sans. To move the section headings to
-   Inter and leave serif to the wordmark, page title and numerals, change one rule
-   in `page.css`:
+```
+python3 tools/figures/line-and-loop.py     # The shift
+python3 tools/figures/cycle-time.py        # The gap
+python3 tools/figures/adoption-map.py      # Rollout
+```
 
-   ```css
-   .section h2 { font-family: var(--sans); font-weight: 600; letter-spacing: -.02em; }
-   ```
+Three of them follow diagrams in [Anthropic's AI-Native SDLC
+playbook](https://claude.com/blog/the-ai-native-sdlc-playbook), redrawn in The
+Code's palette and credited in each figure's caption. Two deliberate departures:
 
-2. **One unverified claim was pulled from the page.** The paragraph in Move 04
-   originally cited "8x more code shipped, ~80% AI-written" carrying a `[verify]`
-   marker. It now makes the same argument without the two numbers, and the marker
-   survives as an HTML comment above that paragraph. Source it to the Jason Clinton
-   post and restore the figures, or leave the qualitative version.
+- **The loop's hub is labelled "agents", not a product mark.** The page bills itself
+  vendor-neutral, and a logo in the centre would contradict that.
+- **The cycle-time figure has a third row the original doesn't.** Anthropic's version
+  ends at "cycle time reclaimed"; this page's argument is that the reclaimed time
+  refills with queue, so row 3 shows that and the caption says whose claim is whose.
+  Rows 1 and 3 end at the same x on purpose.
+
+The fourth, the lifecycle loop in Move 03, is ours.
+
+## One open decision
+
+**An unverified claim was pulled from the page.** The paragraph in Move 04 originally
+cited "8x more code shipped, ~80% AI-written" carrying a `[verify]` marker. It now
+makes the same argument without the two numbers, and the marker survives as an HTML
+comment above that paragraph. Source it to the Jason Clinton post and restore the
+figures, or leave the qualitative version.
 
 ## The kit's `translateY` was removed
 
