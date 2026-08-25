@@ -1,0 +1,15 @@
+{
+  "name": "ai-native-sdlc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The AI-Native SDLC — a lead-magnet field guide, built on The Code design kit.",
+  "scripts": {
+    "dev": "python3 -m http.server 5177",
+    "verify": "node tools/verify.js",
+    "contrast": "python3 tools/contrast.py",
+    "check": "npm run contrast && npm run verify"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}

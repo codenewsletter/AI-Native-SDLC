@@ -1,0 +1,67 @@
+/* ============================================================
+   The Code — brand.css
+   The wordmark. Geometry is measured, not eyeballed — re-measure
+   with `npm run verify` (tools/verify.js) after any change here.
+
+     .brand__mark is .72em  — Playfair Display 700 has a cap-height
+                              ratio of 0.7188, measured in-browser,
+                              so at .72em the square matches the caps
+                              around it to within 0.02px at 20px.
+
+     no translateY          — .brand is inline-flex with
+                              align-items:baseline, and an EMPTY
+                              inline-block takes its bottom margin
+                              edge as its baseline. The browser
+                              therefore lands the square on the
+                              baseline by itself: measured 0.00px
+                              from baseline, 0.02px from cap top.
+                              A nudge here is a 1px error, not a fix.
+                              (If you ever put content inside the
+                              mark, or switch it to an inline <svg>,
+                              that baseline rule stops holding and
+                              the offset comes back — re-measure.)
+
+   Copy the markup block from kit/brand.html rather than retyping
+   it: the spans are jammed together with no whitespace on purpose,
+   so nothing opens a gap around the mark.
+   ============================================================ */
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 20px;              /* default size */
+  line-height: 1;
+  letter-spacing: .12em;
+  color: var(--ink);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.brand__word { display: inline-block; }
+
+.brand__mark {
+  display: inline-block;
+  width: .72em;
+  height: .72em;
+  flex: none;
+  margin: 0 .06em;              /* optical, not structural */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23288CFF'/%3E%3Crect x='3.6' y='3.6' width='16.8' height='16.8' fill='%23FFFFFF'/%3E%3Cpath d='M8.2 6.4L17.7 12.3L13.2 13.5L15.5 17.9L13.3 18.9L11 14.6L8.2 17.4Z' fill='%23288CFF'/%3E%3C/svg%3E");
+}
+
+/* --- sizes ---------------------------------------------- */
+.brand--sm   { font-size: 16px; letter-spacing: .14em; }
+.brand--lg   { font-size: 28px; }
+.brand--hero { font-size: clamp(34px, 5vw, 52px); }
+
+/* --- on dark ground ------------------------------------- */
+.brand--invert { color: var(--on-primary); }
+.brand--invert .brand__mark {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23FFFFFF'/%3E%3Crect x='3.6' y='3.6' width='16.8' height='16.8' fill='%23288CFF'/%3E%3Cpath d='M8.2 6.4L17.7 12.3L13.2 13.5L15.5 17.9L13.3 18.9L11 14.6L8.2 17.4Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+}
+
+a.brand:hover { text-decoration: none; }
+a.brand:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 4px; border-radius: 2px; }

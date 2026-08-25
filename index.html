@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The AI-Native SDLC — The Code</title>
+<meta name="description" content="How engineering teams turn individual coding agents into one coordinated, team-level system. 4 decisions, 3 copy-paste files, 1 scorecard.">
+<link rel="canonical" href="https://codenewsletter.ai/ai-native-sdlc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The AI-Native SDLC — The Code">
+<meta property="og:description" content="Your engineers adopted coding agents months ago. Individual output jumped. Your delivery metrics barely moved. Four decisions that close the gap.">
+<meta property="og:site_name" content="The Code">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F9F9F9">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
+
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/brand.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/page.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="#top" aria-label="The Code — top of page"><span class="brand__word">THE&nbsp;C</span><span class="brand__mark" aria-hidden="true"></span><span class="brand__word">DE</span></a>
+    <a class="btn btn--primary" href="https://codenewsletter.ai/subscribe?source=leadmagnets&amp;utm_medium=ai-native-sdlc">Join 300k+ Engineers</a>
+  </div>
+  <div class="progress" id="progress" role="presentation"></div>
+</header>
+
+<div class="wrap layout" id="top">
+
+  <nav class="rail" aria-label="On this page">
+    <div class="rail__label">Contents</div>
+    <ol id="rail-list">
+      <li><a href="#gap">The gap</a></li>
+      <li><a href="#move-1">01 · Autonomy</a></li>
+      <li><a href="#move-2">02 · Verification</a></li>
+      <li><a href="#move-3">03 · Lifecycle files</a></li>
+      <li><a href="#move-4">04 · Enforcement</a></li>
+      <li><a href="#rollout">30-day order</a></li>
+      <li><a href="#score">Score your team</a></li>
+      <li><a href="#verdict">Our read</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <main id="main">
+
+  <div class="hero">
+    <div class="eyebrow">Field guide · For engineering leaders</div>
+    <h1 class="display">The AI-Native SDLC</h1>
+    <p class="hero__sub">How engineering teams turn individual coding agents into one coordinated, team-level system.</p>
+    <div class="hero__meta">
+      <span class="chip"><b>4</b> decisions</span>
+      <span class="chip"><b>3</b> copy-paste files</span>
+      <span class="chip"><b>1</b> scorecard</span>
+      <span class="chip">vendor-neutral</span>
+      <span class="chip"><a href="#sources">every claim linked</a></span>
+    </div>
+
+    <div class="findings">
+      <div class="finding"><div class="finding__n">01</div><p><b>Verification costs 5x implementation.</b> A 535K-line rewrite at Anthropic: 15% writing, 85% checking.</p></div>
+      <div class="finding"><div class="finding__n">02</div><p><b>Two questions set agent autonomy.</b> Easy to check? Cheap to undo? The model version decides nothing.</p></div>
+      <div class="finding"><div class="finding__n">03</div><p><b>The lifecycle runs on committed files.</b> Each stage writes one; the next stage reads it. Git is the audit trail.</p></div>
+      <div class="finding"><div class="finding__n">04</div><p><b>Must-hold rules run as code.</b> Gates govern what habits can't, at a volume human review can't cover.</p></div>
+    </div>
+  </div>
+
+  <section class="section" id="gap">
+    <div class="kicker">The gap</div>
+    <h2>Why your AI gains aren't showing up</h2>
+    <p class="lede">Your engineers adopted coding agents months ago. Individual output jumped. Your delivery metrics barely moved. This page explains the gap and closes it.</p>
+    <p>A typical change used to run: plan 1 day, design 2, build 3, review 2, deploy 1. Agents collapse the 3-day build to hours. The other six days keep their length. Work now stacks up in front of every human gate you own: review, security sign-off, release approval.</p>
+
+    <div class="card card--flush diagram">
+      <figure>
+        <div class="scroller">
+        <svg class="diagram--wide" viewBox="0 0 800 296" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two timelines drawn to the same scale. Before agents: plan one day, design two, build three, review two, deploy one. With agents: the build collapses to hours, but a queue of almost the same width opens in front of review, so both timelines end at the same point.">
+          <g font-family="ui-monospace,'JetBrains Mono',Menlo,monospace">
+            <line x1="782" y1="30" x2="782" y2="268" stroke="#D6D6D6" stroke-width="1.5" stroke-dasharray="4 5"/>
+
+            <text x="24" y="42" font-size="11.5" letter-spacing="2.4" fill="#5C5C5C">BEFORE AGENTS</text>
+            <g fill="#FFFFFF" stroke="#E4E4E4" stroke-width="1.5">
+              <rect x="24"  y="54" width="76"  height="46" rx="8"/>
+              <rect x="108" y="54" width="160" height="46" rx="8"/>
+              <rect x="276" y="54" width="244" height="46" rx="8"/>
+              <rect x="528" y="54" width="160" height="46" rx="8"/>
+              <rect x="696" y="54" width="76"  height="46" rx="8"/>
+            </g>
+            <g font-size="12.5" fill="#000000" text-anchor="middle">
+              <text x="62"  y="82">Plan 1d</text>
+              <text x="188" y="82">Design 2d</text>
+              <text x="398" y="82">Build 3d</text>
+              <text x="608" y="82">Review 2d</text>
+              <text x="734" y="82">Deploy 1d</text>
+            </g>
+
+            <text x="24" y="190" font-size="11.5" letter-spacing="2.4" fill="#5C5C5C">WITH AGENTS</text>
+            <g fill="#FFFFFF" stroke="#E4E4E4" stroke-width="1.5">
+              <rect x="24"  y="202" width="76"  height="46" rx="8"/>
+              <rect x="108" y="202" width="160" height="46" rx="8"/>
+              <rect x="528" y="202" width="160" height="46" rx="8"/>
+              <rect x="696" y="202" width="76"  height="46" rx="8"/>
+            </g>
+            <rect x="276" y="202" width="20"  height="46" rx="6" fill="#288CFF" stroke="#288CFF" stroke-width="1.5"/>
+            <rect x="304" y="202" width="216" height="46" rx="8" fill="#FDF0EE" stroke="#BF2E1C" stroke-width="1.5" stroke-dasharray="5 4"/>
+            <g font-size="12.5" fill="#000000" text-anchor="middle">
+              <text x="62"  y="230">Plan 1d</text>
+              <text x="188" y="230">Design 2d</text>
+              <text x="608" y="230">Review 2d</text>
+              <text x="734" y="230">Deploy 1d</text>
+            </g>
+            <text x="412" y="230" font-size="12.5" fill="#BF2E1C" text-anchor="middle">queue</text>
+            <path d="M 286 250 L 286 262" stroke="#288CFF" stroke-width="1.5"/>
+            <text x="286" y="278" font-size="11.5" fill="#0F6FDB" text-anchor="middle">hours</text>
+          </g>
+        </svg>
+        </div>
+        <figcaption>Same total cycle. Build time became queue time. <span class="scroll-hint">Scroll sideways →</span></figcaption>
+      </figure>
+    </div>
+
+    <p>Two endings, both bad: the queue eats the gains, or code ships under-reviewed.</p>
+    <p>The companies furthest ahead already paid to solve this. In mid-2026, <a href="https://claude.com/blog/the-ai-native-sdlc-playbook">Anthropic</a>, <a href="https://cdn.openai.com/business-guides-and-resources/building-an-ai-native-engineering-team.pdf">OpenAI</a>, <a href="https://www.uber.com/in/en/blog/first-pass-prd/">Uber</a>, and <a href="https://x.com/posthog/status/2081819814495195393">PostHog</a> each published how they run engineering when agents write most of the code. They compete, and their playbooks still land on the same four moves. You don't need their token budgets or their hiring bar to run the moves. You need the four decisions below.</p>
+  </section>
+
+  <section class="section" id="move-1">
+    <div class="kicker">Move 01</div>
+    <h2>Set agent autonomy per task</h2>
+    <p class="problem"><b>Your problem:</b> every engineer decides daily, by feel, how much to trust the agent. Ten engineers, ten different rules, zero consistency.</p>
+    <p><b>The fix:</b> decide per task with two questions. <b>Is the work easy to check?</b> A test suite that proves correctness means yes. <b>Is a mistake cheap to undo?</b> A safe revert with no customer impact means yes.</p>
+
+    <div class="card">
+      <div class="matrix">
+        <div class="matrix__x"><span>hard to check</span><span>easy to check →</span></div>
+        <div class="matrix__y">costly to undo &nbsp;←&nbsp; cheap to undo</div>
+
+        <div class="quad quad--l1">
+          <div class="quad__lvl">LEVEL 1 · AGENT DRAFTS</div>
+          <div class="quad__who">Human judges taste.</div>
+          <p>Readability refactors, naming, subjective calls.</p>
+          <div class="quad__cond">hard to check · cheap to undo</div>
+        </div>
+        <div class="quad quad--l3">
+          <div class="quad__lvl">LEVEL 3 · AGENT MERGES ALONE</div>
+          <div class="quad__who">Self-driving.</div>
+          <p>Dependency bumps, lint fixes, test coverage.</p>
+          <div class="quad__cond">easy to check · cheap to undo</div>
+        </div>
+        <div class="quad quad--l0">
+          <div class="quad__lvl">LEVEL 0 · AGENT ASSISTS</div>
+          <div class="quad__who">Human writes.</div>
+          <p>Sensitive core code, wide blast radius.</p>
+          <div class="quad__cond">hard to check · costly to undo</div>
+        </div>
+        <div class="quad quad--l2">
+          <div class="quad__lvl">LEVEL 2 · AGENT WRITES</div>
+          <div class="quad__who">Human owns the merge. <span class="quad__now">today's default</span></div>
+          <p>Most dev work with a real test suite.</p>
+          <div class="quad__cond">easy to check · costly to undo</div>
+        </div>
+      </div>
+    </div>
+
+    <p><a href="https://x.com/posthog/status/2081819814495195393">PostHog's engineering team</a> built this ladder and runs on it. Their warning for teams that raise autonomy whenever a better model ships: that's skipping your seatbelt because you got a nicer car. The task sets the ceiling.</p>
+
+    <div class="do">
+      <div class="do__k">RUN IT THIS WEEK</div>
+      <p>Classify your last 20 merged PRs on the matrix. Every Level 2 or 3 task a senior engineer still babysits line-by-line is attention you're wasting. To raise a task's level, improve one answer: better tests make work checkable, feature flags and rehearsed rollbacks make mistakes reversible.</p>
+    </div>
+  </section>
+
+  <section class="section" id="move-2">
+    <div class="kicker">Move 02</div>
+    <h2>Spend on checking before more generating</h2>
+    <p class="problem"><b>Your problem:</b> you're buying more generation capacity while your review capacity stands still. The math no longer supports that.</p>
+
+    <div class="card">
+      <div class="stat">
+        <div class="stat__n">15%<small>writing code</small></div>
+        <div class="stat__n stat__n--hi">85%<small>verifying it</small></div>
+      </div>
+      <div class="splitbar" role="img" aria-label="15 percent of effort writing code, 85 percent verifying it"><i class="a"></i><i class="b"></i></div>
+      <p class="meta" style="margin:0;max-width:none">Bun's 535,000-line Zig-to-Rust rewrite: 11 days, 64 parallel agents, on a job estimated at 3 engineer-years. <a href="https://newsletter.pragmaticengineer.com/p/inside-anthropic">The Pragmatic Engineer, inside Anthropic</a>.</p>
+    </div>
+
+    <p>Checking work now costs about five times more than producing it. That flips your investment priority. Four practices from teams already running this way, sized for a normal budget:</p>
+    <ul>
+      <li><b>Agents verify their own work first.</b> Give every session one command that proves success: tests, build, screenshot diff. The agent loops until it passes. A human only sees passing work.</li>
+      <li><b>Never let an agent edit the tests for code it's fixing.</b> Block it in config. One rule, most of the safety.</li>
+      <li><b>Run several narrow AI review passes instead of one broad one.</b> Separate passes for bugs, security, and spec compliance. A fooled reviewer gets caught by the next one. (<a href="https://claude.com/blog/the-ai-native-sdlc-playbook">Anthropic</a> and <a href="https://cdn.openai.com/business-guides-and-resources/building-an-ai-native-engineering-team.pdf">OpenAI</a> both ship this pattern.)</li>
+      <li><b>Move humans to intent and risk.</b> Does the change do what we meant? Is the blast radius acceptable? Stop re-checking anything the pipeline already proved.</li>
+    </ul>
+
+    <div class="codeblock">
+      <span class="codeblock__name">REVIEW.md</span>
+      <button class="codeblock__copy" type="button" data-copy>Copy</button>
+<pre><code>## Passes (run all three, tag each finding)
+- Bugs: logic errors, broken edge cases
+- Security: injection, auth gaps, PII in logs
+- Compliance: change matches spec.md and plan.md
+
+## "Important" = breaks behavior, leaks data, or breaches policy
+## Cap nits at 5 per review
+## Skip generated files and anything CI already enforces</code></pre>
+    </div>
+  </section>
+
+  <section class="section" id="move-3">
+    <div class="kicker">Move 03</div>
+    <h2>Put your lifecycle in files agents can read</h2>
+    <p class="problem"><b>Your problem:</b> your requirements live in slide decks and meeting notes. A human has to translate them before any agent can act, and the translation loses detail every time.</p>
+    <p><b>The fix:</b> each stage commits one file the next stage reads. An idea becomes <code>intent.md</code>. An accepted intent becomes <code>spec.md</code>. An approved spec becomes <code>plan.md</code>, which gates the code. A production incident writes the next <code>intent.md</code>, and the loop closes.</p>
+
+    <div class="card card--flush diagram">
+      <figure>
+        <div class="scroller">
+        <svg class="diagram--loop" viewBox="0 0 720 562" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A six-stage loop of committed files: intent.md to spec.md to plan.md to code and tests to PR review to production, and back to intent.md. A human gate sits on every handoff.">
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 1.5 L8 5 L0 8.5" fill="none" stroke="#5C5C5C" stroke-width="1.7"/>
+            </marker>
+          </defs>
+
+          <g fill="none" stroke="#5C5C5C" stroke-width="1.7" marker-end="url(#ah)">
+            <path d="M 442.8 92.9 A 212 212 0 0 1 518.8 147.5"/>
+            <path d="M 559.5 216.4 A 212 212 0 0 1 559.5 359.6"/>
+            <path d="M 518.8 428.5 A 212 212 0 0 1 442.8 483.1"/>
+            <path d="M 277.2 483.1 A 212 212 0 0 1 201.2 428.5"/>
+            <path d="M 160.5 359.6 A 212 212 0 0 1 160.5 216.4"/>
+            <path d="M 201.2 147.5 A 212 212 0 0 1 277.2 92.9"/>
+          </g>
+
+          <g fill="#FFFFFF" stroke="#000000" stroke-width="1.6">
+            <rect x="459.0" y="97.4"  width="14" height="14" rx="2" transform="rotate(45 466.0 104.4)"/>
+            <rect x="565.0" y="281.0" width="14" height="14" rx="2" transform="rotate(45 572.0 288.0)"/>
+            <rect x="459.0" y="464.6" width="14" height="14" rx="2" transform="rotate(45 466.0 471.6)"/>
+            <rect x="247.0" y="464.6" width="14" height="14" rx="2" transform="rotate(45 254.0 471.6)"/>
+            <rect x="141.0" y="281.0" width="14" height="14" rx="2" transform="rotate(45 148.0 288.0)"/>
+            <rect x="247.0" y="97.4"  width="14" height="14" rx="2" transform="rotate(45 254.0 104.4)"/>
+          </g>
+
+          <g stroke-width="1.6">
+            <rect x="290.0" y="54.0"  width="140" height="44" rx="10" fill="#288CFF" stroke="#288CFF"/>
+            <rect x="473.6" y="160.0" width="140" height="44" rx="10" fill="#288CFF" stroke="#288CFF"/>
+            <rect x="473.6" y="372.0" width="140" height="44" rx="10" fill="#288CFF" stroke="#288CFF"/>
+            <rect x="290.0" y="478.0" width="140" height="44" rx="10" fill="#FFFFFF" stroke="#E4E4E4"/>
+            <rect x="106.4" y="372.0" width="140" height="44" rx="10" fill="#FFFFFF" stroke="#E4E4E4"/>
+            <rect x="106.4" y="160.0" width="140" height="44" rx="10" fill="#FFFFFF" stroke="#E4E4E4"/>
+          </g>
+
+          <g font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" font-size="16.5" text-anchor="middle">
+            <g fill="#FFFFFF" font-weight="600">
+              <text x="360.0" y="81.5">intent.md</text>
+              <text x="543.6" y="187.5">spec.md</text>
+              <text x="543.6" y="399.5">plan.md</text>
+            </g>
+            <g fill="#000000">
+              <text x="360.0" y="505.5">code + tests</text>
+              <text x="176.4" y="399.5">PR review</text>
+              <text x="176.4" y="187.5">production</text>
+            </g>
+          </g>
+
+          <g font-family="ui-monospace,'JetBrains Mono',Menlo,monospace" text-anchor="middle">
+            <rect x="299" y="250" width="13" height="13" rx="2" fill="#FFFFFF" stroke="#000000" stroke-width="1.6" transform="rotate(45 305.5 256.5)"/>
+            <text x="381" y="261" font-size="14.5" fill="#000000">= human gate</text>
+            <text x="360" y="302" font-size="14.5" fill="#5C5C5C">an incident writes</text>
+            <text x="360" y="323" font-size="14.5" fill="#5C5C5C">the next intent.md</text>
+          </g>
+        </svg>
+        </div>
+        <figcaption>The commit history is your audit trail: who asked, what shipped, who approved. <span class="scroll-hint">Scroll sideways →</span></figcaption>
+      </figure>
+    </div>
+
+    <p>This is <a href="https://claude.com/blog/the-ai-native-sdlc-playbook">Anthropic's playbook</a> pattern, and it transfers because it needs git and nothing else. <a href="https://www.uber.com/in/en/blog/first-pass-prd/">Uber runs the same idea for product docs</a>: an AI first-pass reviewer scores every PRD before senior review, so the expensive meeting starts at judgment instead of context recovery.</p>
+
+    <div class="codeblock">
+      <span class="codeblock__name">intent.md</span>
+      <button class="codeblock__copy" type="button" data-copy>Copy</button>
+<pre><code># Intent: &lt;what you want&gt;
+Author: &lt;name&gt;. Status: draft.
+
+## Problem
+What you can't do today, in plain language.
+
+## Proposed outcome
+What "done" looks like for this change.
+
+## Affected systems / users
+Who depends on this, and who owns them.
+
+## Constraints
+Rules this must follow: compliance, licensing, cutover windows.
+
+## Open questions
+Unresolved items. Carry them forward; don't block on them.</code></pre>
+    </div>
+
+    <p>The Constraints section repays its five minutes fastest. A constraint written once reaches the agent in every session. You stop having the same correction conversation twice.</p>
+    <p class="dim">One honest limit from <a href="https://newsletter.pragmaticengineer.com/p/inside-anthropic">inside Anthropic</a>: their most complex platform project of the year still ran a full traditional planning process, because dozens of people across three clouds needed alignment. Files replace coordination rituals. Complex systems still need thinking.</p>
+  </section>
+
+  <section class="section" id="move-4">
+    <div class="kicker">Move 04</div>
+    <h2>Sort every rule into advisory or enforced</h2>
+    <p class="problem"><b>Your problem:</b> your engineering rules live in wikis and senior engineers' heads. Agents don't read wikis, and at machine speed a habit can't stop anything.</p>
+
+    <div class="card">
+      <div class="sort">
+        <div class="sort__col">
+          <h4>ADVISORY</h4>
+          <div class="sort__tag">makes violations rare</div>
+          <ul><li>context files (CLAUDE.md / AGENTS.md)</li><li>policy skills</li><li>review guidelines</li></ul>
+        </div>
+        <div class="sort__arrow" aria-hidden="true">→</div>
+        <div class="sort__col sort__col--enf">
+          <h4>ENFORCED</h4>
+          <div class="sort__tag">makes violations near-impossible</div>
+          <ul><li>hooks that block actions</li><li>pipeline policy gates</li><li>branch protection</li><li>scoped permissions</li></ul>
+        </div>
+      </div>
+      <figcaption>A must-hold rule found in the left column is a gap. Move it right.</figcaption>
+    </div>
+
+    <!-- TODO before publish: source the "8x more code, ~80% AI-written" figures to the
+         Jason Clinton post and verify both numbers, then restore them to this paragraph.
+         Left out of the rendered page rather than shipped unverified. -->
+    <p>Anthropic's security team learned where the line sits: one of their agents asked another agent to deploy a fix it lacked authorization to push itself. A human caught it. Their conclusion applies to any org: better instructions can't secure an agent. Constrained access can. One job per agent, minimum permissions, every action logged. And the volume forces the issue — engineers now ship several times the code they did before agents, most of it AI-written. Human-speed review can't govern that. Gates can.</p>
+
+    <p>The anchor rule across every playbook: <b>the agent does everything up to the production gate and never crosses it.</b> Enforced in ten lines:</p>
+
+    <div class="codeblock">
+      <span class="codeblock__name">.claude/hooks/production-gate.sh</span>
+      <button class="codeblock__copy" type="button" data-copy>Copy</button>
+<pre><code>#!/bin/bash
+cmd=$(jq -r '.tool_input.command' &lt; /dev/stdin)
+if [[ "$cmd" == *"deploy"* &amp;&amp; "$cmd" == *"production"* ]]; then
+  if [ -z "$RELEASE_APPROVAL" ]; then
+    echo "Production deploys need a named release authorization." &gt;&amp;2
+    exit 2  # blocks the action; the message goes to the agent
+  fi
+fi
+exit 0</code></pre>
+    </div>
+
+    <div class="do">
+      <div class="do__k">RUN IT THIS MONTH</div>
+      <p>List your rules, sort the columns. Every must-hold rule sitting in a wiki is a gap. Close each one with a hook or a pipeline check.</p>
+    </div>
+  </section>
+
+  <div class="band">
+    <div>
+      <h3>The Code, in your inbox</h3>
+      <p>Daily AI engineering news and briefings like this one, read by 300k+ engineers.</p>
+    </div>
+    <a class="btn btn--primary" href="https://codenewsletter.ai/subscribe?source=leadmagnets&amp;utm_medium=ai-native-sdlc">Join 300k+ Engineers</a>
+  </div>
+
+  <section class="section" id="rollout">
+    <div class="kicker">Rollout</div>
+    <h2>Your 30-day order</h2>
+    <p>Sequence from enterprise field work (<a href="https://ashishkasaudhan.medium.com/the-ai-native-sdlc-a-practical-playbook-for-cloud-migration-teams-c2b2ddae9d95">Kasaudhan's migration playbook</a>). The order matters: the last step needs negotiation with security and platform teams, the first needs nothing.</p>
+    <div class="steps">
+      <div class="step"><div class="step__wk">WEEK 1</div><div class="step__t">intent.md</div><p>Five minutes of writing before any generation. Zero tooling.</p></div>
+      <div class="step"><div class="step__wk">WEEK 2</div><div class="step__t">context file</div><p>Day-one knowledge into CLAUDE.md / AGENTS.md. Second same mistake = the correction goes in.</p></div>
+      <div class="step"><div class="step__wk">WEEK 3</div><div class="step__t">plan before code</div><p>Agent proposes first. Ask: what breaks? riskiest step? what did you not choose?</p></div>
+      <div class="step"><div class="step__wk">WEEK 4</div><div class="step__t">REVIEW.md + gate</div><p>Mechanical checks to the pipeline, judgment to humans. Wire the production gate.</p></div>
+    </div>
+    <p class="dim" style="margin-top:var(--s-5)">A staffing note, because a myth is spreading. <a href="https://newsletter.pragmaticengineer.com/p/inside-anthropic">Anthropic's teams remain 6 to 8 people</a>. The change: one team now runs 3 to 8 parallel projects with about two engineers per project. Plan for the same teams shipping several times the projects. Headcount plans built on "two engineers and a swarm" will misfire.</p>
+  </section>
+
+  <section class="section" id="score">
+    <div class="kicker">Diagnostic</div>
+    <h2>Score your team</h2>
+    <p>Tap what's true today. One point per yes. Your answers stay in this browser.</p>
+
+    <div class="card">
+      <div class="score" id="scorecard">
+        <button class="score__item" type="button" aria-pressed="false"><span class="score__box" aria-hidden="true"></span><span class="score__text">Tests an agent can run prove most of the codebase correct<span class="score__fix">fixed by Move 01</span></span></button>
+        <button class="score__item" type="button" aria-pressed="false"><span class="score__box" aria-hidden="true"></span><span class="score__text">A written per-task rule sets agent autonomy<span class="score__fix">fixed by Move 01</span></span></button>
+        <button class="score__item" type="button" aria-pressed="false"><span class="score__box" aria-hidden="true"></span><span class="score__text">Agent work verifies itself before a human sees it<span class="score__fix">fixed by Move 02</span></span></button>
+        <button class="score__item" type="button" aria-pressed="false"><span class="score__box" aria-hidden="true"></span><span class="score__text">Separate review passes (bugs, security, spec) run on every PR<span class="score__fix">fixed by Move 02</span></span></button>
+        <button class="score__item" type="button" aria-pressed="false"><span class="score__box" aria-hidden="true"></span><span class="score__text">Requirements live in files agents read directly<span class="score__fix">fixed by Move 03</span></span></button>
+        <button class="score__item" type="button" aria-pressed="false"><span class="score__box" aria-hidden="true"></span><span class="score__text">Day-one knowledge lives in a repo file, never only in a head<span class="score__fix">fixed by Move 03</span></span></button>
+        <button class="score__item" type="button" aria-pressed="false"><span class="score__box" aria-hidden="true"></span><span class="score__text">Must-hold rules are enforced as code<span class="score__fix">fixed by Move 04</span></span></button>
+        <button class="score__item" type="button" aria-pressed="false"><span class="score__box" aria-hidden="true"></span><span class="score__text">No agent reaches production without a named human<span class="score__fix">fixed by Move 04</span></span></button>
+
+        <div class="score__result">
+          <div class="score__num" id="score-num">0 / 8</div>
+          <p class="score__verdict" id="score-verdict">Tap the items above to see where your team stands.</p>
+          <button class="btn btn--ghost btn--sm" type="button" id="score-reset">Reset</button>
+        </div>
+        <p class="visually-hidden" role="status" aria-live="polite" id="score-live"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="verdict">
+    <div class="kicker">Our read</div>
+    <h2>What transfers, and what stays inside the labs</h2>
+    <p>We read every playbook on this page so your team doesn't have to run the experiments. Here's the call.</p>
+    <p><b>All four moves transfer.</b> They need a git repo, a test suite, and the discipline to write four files. No token budget, no platform team, no headcount. Run them in the order on this page and your review queue stops absorbing your gains.</p>
+    <p><b>The 11-day rewrite doesn't transfer, and you shouldn't want it to.</b> That run cost $165,000 in tokens and depended on an engineer who wrote the codebase himself. Take the 15/85 split as the durable finding, because it holds at any scale. Treat the calendar time as a lab record.</p>
+    <p><b>The gap is real and it's the reason for the ordering.</b> Telemetry from 22,000 developers (<a href="https://www.faros.ai/blog/ai-software-engineering">Faros AI, 2026</a>) shows review cycles stretching and incidents climbing wherever generation outran verification. That's the failure Move 02 and Move 04 exist to prevent, which is why we put them ahead of the rest.</p>
+    <p><b>Re-run this every quarter.</b> Anthropic deleted 80% of one system prompt the week a model got smarter. Your guardrails are a living config, so put the review on the calendar now.</p>
+  </section>
+
+  <section class="section" id="sources">
+    <div class="kicker">Sources</div>
+    <h2>Every claim on this page</h2>
+    <p>Primary sources only, published mid-2026 unless noted.</p>
+    <ul class="sources">
+      <li><a href="https://claude.com/blog/the-ai-native-sdlc-playbook"><span class="who">Anthropic</span><span class="what">The AI-Native SDLC Playbook — lifecycle files, narrow review passes</span></a></li>
+      <li><a href="https://cdn.openai.com/business-guides-and-resources/building-an-ai-native-engineering-team.pdf"><span class="who">OpenAI</span><span class="what">Building an AI-Native Engineering Team (PDF) — review pass structure</span></a></li>
+      <li><a href="https://newsletter.pragmaticengineer.com/p/inside-anthropic"><span class="who">Pragmatic Engineer</span><span class="what">Inside Anthropic — the 15/85 split, team sizes, the Bun rewrite</span></a></li>
+      <li><a href="https://x.com/posthog/status/2081819814495195393"><span class="who">PostHog</span><span class="what">The autonomy ladder, and why model upgrades don't raise it</span></a></li>
+      <li><a href="https://www.uber.com/in/en/blog/first-pass-prd/"><span class="who">Uber</span><span class="what">First-pass PRD review — the same file pattern for product docs</span></a></li>
+      <li><a href="https://www.faros.ai/blog/ai-software-engineering"><span class="who">Faros AI</span><span class="what">Telemetry from 22,000 developers — review cycles and incident rates</span></a></li>
+      <li><a href="https://ashishkasaudhan.medium.com/the-ai-native-sdlc-a-practical-playbook-for-cloud-migration-teams-c2b2ddae9d95"><span class="who">Kasaudhan</span><span class="what">Migration playbook — the 30-day rollout order</span></a></li>
+    </ul>
+  </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <div>
+      <span class="brand brand--sm"><span class="brand__word">THE&nbsp;C</span><span class="brand__mark" aria-hidden="true"></span><span class="brand__word">DE</span></span>
+      <p class="dim" style="margin-top:var(--s-3);font-size:14px;max-width:34ch">Curated briefings for engineering leaders building with AI.</p>
+    </div>
+    <nav class="foot__nav" aria-label="Page sections">
+      <a href="#move-1">01 · Autonomy</a>
+      <a href="#move-2">02 · Verification</a>
+      <a href="#move-3">03 · Lifecycle files</a>
+      <a href="#move-4">04 · Enforcement</a>
+      <a href="#score">Score your team</a>
+      <a href="#sources">Sources</a>
+    </nav>
+    <a class="btn btn--primary" href="https://codenewsletter.ai/subscribe?source=leadmagnets&amp;utm_medium=ai-native-sdlc">Join 300k+ Engineers</a>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

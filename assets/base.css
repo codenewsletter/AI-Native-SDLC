@@ -1,0 +1,157 @@
+/* ============================================================
+   The Code — base.css
+   Reset + the components every project reuses:
+   header, buttons, chips, cards, tags, code block, footer.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;          /* clears the sticky header */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: var(--t-3) / var(--lh-body) var(--sans);
+  font-feature-settings: 'cv05' 1, 'ss01' 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, p, ul, ol, figure, blockquote { margin: 0; }
+ul, ol { padding-left: 1.15em; }
+li { margin: var(--s-2) 0; }
+img, svg { max-width: 100%; }
+
+a { color: var(--accent-ink); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; border-radius: 3px; }
+
+.wrap { max-width: var(--page); margin-inline: auto; padding-inline: var(--s-6); }
+
+/* --- type roles ----------------------------------------- */
+.display   { font-family: var(--serif); font-weight: 500; letter-spacing: -.015em; line-height: var(--lh-tight); }
+.meta      { font-family: var(--mono); font-size: var(--t-2); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.eyebrow   { font-family: var(--mono); font-size: var(--t-1); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); }
+.kicker    { font-family: var(--mono); font-size: var(--t-1); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-ink); }
+.dim       { color: var(--ink-2); }
+
+/* --- buttons -------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  font: 600 var(--t-3) / 1 var(--sans);
+  padding: 13px 22px;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease),
+              border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+.btn--primary { background: var(--primary); color: var(--on-primary); box-shadow: var(--shadow-primary); }
+.btn--primary:hover { background: var(--accent-ink); text-decoration: none; transform: translateY(-1px); }
+.btn--ghost { background: var(--surface); color: var(--ink); border-color: var(--border); }
+.btn--ghost:hover { border-color: var(--ink); text-decoration: none; }
+.btn--sm { font-size: var(--t-2); padding: 9px 15px; }
+
+/* --- chips / tags --------------------------------------- */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font: 500 var(--t-2) / 1 var(--mono);
+  color: var(--ink-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 8px 13px;
+}
+.chip b { color: var(--ink); font-weight: 600; }
+
+/* --- surfaces ------------------------------------------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--s-6);
+}
+.card--wash { background: var(--wash); border-color: var(--wash-line); }
+.card--wash a { color: var(--accent-ink-on-wash); }
+.card--flush { padding: var(--s-6) var(--s-4) var(--s-4); }
+
+/* --- code ----------------------------------------------- */
+code {
+  font: 500 .9em / 1.4 var(--mono);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 1px 5px;
+}
+.codeblock pre code {
+  background: none; border: 0; padding: 0;
+  font: inherit; color: inherit;
+}
+.codeblock { position: relative; margin: var(--s-6) 0; }
+.codeblock pre {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--s-6) var(--s-5) var(--s-5);
+  overflow-x: auto;
+  font: var(--t-2) / 1.6 var(--mono);
+  color: var(--ink);
+  tab-size: 2;
+}
+.codeblock__name {
+  position: absolute; top: -9px; left: 16px;
+  font: 600 var(--t-1) / 1 var(--mono);
+  color: var(--accent-ink);
+  background: var(--bg);
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+}
+.codeblock__copy {
+  position: absolute; top: 12px; right: 12px;
+  font: 600 var(--t-1) / 1 var(--mono);
+  color: var(--ink-3);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 7px 10px; cursor: pointer;
+  transition: color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+}
+.codeblock__copy:hover { color: var(--accent-ink); border-color: var(--accent-ink); }
+.codeblock__copy[data-state="done"] { color: var(--accent-ink); border-color: var(--accent-ink); }
+
+/* --- figures -------------------------------------------- */
+figure { margin: 0; }
+figcaption {
+  font: 500 var(--t-2) / 1.5 var(--mono);
+  color: var(--ink-3);
+  margin-top: var(--s-3);
+}
+.scroller { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* --- footer --------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  margin-top: var(--s-24);
+  padding: var(--s-12) 0 var(--s-16);
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+.skip-link {
+  position: absolute; left: var(--s-4); top: -60px; z-index: 100;
+  background: var(--ink); color: var(--on-primary);
+  padding: 10px 16px; border-radius: var(--r-sm);
+  font: 600 var(--t-2) / 1 var(--sans);
+  transition: top var(--dur-1) var(--ease);
+}
+.skip-link:focus { top: var(--s-3); text-decoration: none; }

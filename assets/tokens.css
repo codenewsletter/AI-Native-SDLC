@@ -1,0 +1,74 @@
+/* ============================================================
+   The Code — tokens.css
+   Palette, type scale, space scale, shadows, motion.
+   Every value here is brand-level. Page-level styling belongs
+   in page.css, never in this file.
+   ============================================================ */
+
+:root {
+  /* --- palette (authoritative) --------------------------- */
+  --bg:          #F9F9F9;
+  --surface:     #FFFFFF;
+  --primary:     #288CFF;   /* fill only — 3.17:1 on --bg */
+  --on-primary:  #FFFFFF;   /* 3.34:1 on --primary: large/bold text only */
+  --ink:         #000000;
+  --border:      #E4E4E4;
+
+  /* --- palette (derived; measured, see tools/contrast.py) - */
+  --accent-ink:         #0F6FDB;  /* links & small text on light — 4.62:1 on bg */
+  --accent-ink-on-wash: #0D66CC;  /* same role on --wash        — 4.91:1        */
+  --ink-2:              #3F3F3F;  /* secondary prose           — 10.00:1        */
+  --ink-3:              #5C5C5C;  /* mono metadata, captions   —  6.35:1        */
+  --hairline:           #EFEFEF;  /* lighter rule than --border */
+  --wash:               #E9F2FF;  /* blue panel ground */
+  --wash-line:          #C4DDFF;
+  --alert:              #BF2E1C;  /* used only for "the problem" — 5.51:1 */
+  --alert-wash:         #FDF0EE;
+  --alert-line:         #F3CFC9;
+
+  /* --- type ---------------------------------------------- */
+  --serif: 'Playfair Display', 'Iowan Old Style', Georgia, serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono:  'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* 7-step scale, 15px base */
+  --t-1: 11.5px;   /* mono eyebrows, tags */
+  --t-2: 13px;     /* mono metadata, captions */
+  --t-3: 15px;     /* base */
+  --t-4: 17px;     /* lede */
+  --t-5: 21px;     /* h3 / deck */
+  --t-6: clamp(26px, 3.2vw, 34px);          /* h2 */
+  --t-7: clamp(38px, 6.2vw, 64px);          /* h1 / display */
+
+  --lh-tight: 1.12;
+  --lh-snug:  1.34;
+  --lh-body:  1.62;
+
+  /* --- space (4px scale) --------------------------------- */
+  --s-1:  4px;  --s-2:  8px;  --s-3: 12px;  --s-4: 16px;
+  --s-5: 20px;  --s-6: 24px;  --s-8: 32px;  --s-10: 40px;
+  --s-12: 48px; --s-16: 64px; --s-20: 80px; --s-24: 96px;
+
+  /* --- radii, shadow, motion ------------------------------ */
+  --r-sm: 6px; --r-md: 10px; --r-lg: 14px; --r-pill: 999px;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, .05);
+  --shadow-2: 0 6px 20px rgba(0, 0, 0, .07);
+  --shadow-primary: 0 1px 2px rgba(40, 140, 255, .35);
+
+  --ease: cubic-bezier(.2, .6, .3, 1);
+  --dur-1: 120ms;
+  --dur-2: 220ms;
+
+  --measure: 68ch;      /* prose line length */
+  --page: 980px;        /* content column */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
